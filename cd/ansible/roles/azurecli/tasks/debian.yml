@@ -1,0 +1,30 @@
+- name: add apt key for azure cli (older version)
+  apt_key:
+    keyserver: packages.microsoft.com
+    id: 52E16F86FEE04B979B07E28DB02C46DF417A0893
+
+- name: add apt signing key for azure cli from url
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: add azure cli repo and update apt cache
+  apt_repository:
+    repo: deb https://packages.microsoft.com/repos/azure-cli/ xenial main
+    update_cache: yes
+    state: present
+  tags: [azurecli]
+
+- name: ubuntu apt-transport-https is present
+  apt:
+    name: apt-transport-https
+    state: present
+    force: yes
+  tags: [azurecli]
+  
+- name: ubuntu azure-cli is present
+  apt:
+    name: azure-cli
+    state: present
+    force: yes
+  tags: [azurecli]

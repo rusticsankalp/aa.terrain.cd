@@ -4,7 +4,7 @@
 # User secrets
 docker-compose.override.yml
 cert/
-secrets/
+.secrets/
 keys/
 # User-specific files
 *.suo

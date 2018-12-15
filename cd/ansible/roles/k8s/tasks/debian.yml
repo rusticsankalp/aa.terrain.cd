@@ -1,0 +1,48 @@
+- name: add apt key  kubernetes
+  apt_key:
+    url: 'https://packages.cloud.google.com/apt/doc/apt-key.gpg/'
+    state: 'present'
+
+- name: Debian add Docker repository and update apt cache
+  apt_repository:
+    repo: deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main
+    update_cache: yes
+    state: present
+  tags: [kubernetes]
+
+- name: Install kubeadm (Debian/Ubuntu)
+  apt:
+    name: kubeadm
+    state: present
+
+- name: Install kubelet (Debian/Ubuntu)
+  apt:
+    name: kubelet
+    state: present
+
+- name: Install kubectl (Debian/Ubuntu)
+  apt:
+    name: kubectl
+    state: present
+
+# - name: Enable and check kubelet service
+  # systemd:
+    # name: kubelet
+    # daemon_reload: yes
+    # state: started
+    # enabled: yes
+  # tags: [kubernetes]
+
+# - name: Enable and check kubeadm service
+  # systemd:
+    # name: kubeadm
+    # daemon_reload: yes
+    # state: started
+    # enabled: yes
+  # tags: [kubernetes]
+ 
+
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: true
+
