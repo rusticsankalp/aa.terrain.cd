@@ -3,3 +3,5 @@
   serial: 3
   roles:
     - common
+    - azurecli
+    - docker
