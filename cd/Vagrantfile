@@ -51,8 +51,8 @@ Vagrant.configure(2) do |config|
     d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
     d.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-      v.memory = 8192 
-      v.cpus = 6
+      v.memory = 4096 
+      v.cpus = 4
     end
   end
   config.vm.define "dlowkeyvmac" do |d|
