@@ -46,7 +46,7 @@ Vagrant.configure(2) do |config|
     end
   end
   config.vm.define "dlowkeyvmab" do |d|
-    d.vm.hostname = "dlowkeyvmaa"
+    d.vm.hostname = "dlowkeyvmab"
     d.vm.network "public_network"
     d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
     d.vm.provider "virtualbox" do |v|
@@ -56,7 +56,7 @@ Vagrant.configure(2) do |config|
     end
   end
   config.vm.define "dlowkeyvmac" do |d|
-    d.vm.hostname = "dlowkeyvmaa"
+    d.vm.hostname = "dlowkeyvmac"
     d.vm.network "public_network"
     d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
     d.vm.provider "virtualbox" do |v|
@@ -66,17 +66,17 @@ Vagrant.configure(2) do |config|
     end
   end
   config.vm.define "dlowkeyvmad" do |d|
-    d.vm.hostname = "dlowkeyvmaa"
+    d.vm.hostname = "dlowkeyvmad"
     d.vm.network "public_network"
     d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
     d.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.memory = 8192 
-      v.cpus = 6
+      v.cpus = 3
     end
   end
   config.vm.define "dlowkeyvmae" do |d|
-    d.vm.hostname = "dlowkeyvmaa"
+    d.vm.hostname = "dlowkeyvmae"
     d.vm.network "public_network"
     d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
     d.vm.provider "virtualbox" do |v|
@@ -86,7 +86,7 @@ Vagrant.configure(2) do |config|
     end
   end
   config.vm.define "dlowkeyvmaf" do |d|
-    d.vm.hostname = "dlowkeyvmaa"
+    d.vm.hostname = "dlowkeyvmaf"
     d.vm.network "public_network"
     d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
     d.vm.provider "virtualbox" do |v|
