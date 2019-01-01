@@ -18,10 +18,10 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, :inline =>"
       echo 'Authorizing custom public key ....'
       echo '#{public_key}' >>  ~/.ssh/authorized_keys
-      chmod 400 ~/.ssh/id_rsa
+      #chmod 400 ~/.ssh/id_rsa
     ",privileged: false
   config.vm.provision :shell, :inline =>"
-      echo 'Authorizing custom public key fo root....'
+      echo 'Authorizing custom public key for root....'
       echo '#{public_key}' >>  /root/.ssh/authorized_keys
     ",privileged: true
   config.vm.define "cd" do |d|
@@ -33,6 +33,66 @@ Vagrant.configure(2) do |config|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.memory = 1024
       v.cpus = 1
+    end
+  end
+  config.vm.define "dlowkeyvmaa" do |d|
+    d.vm.hostname = "dlowkeyvmaa"
+    d.vm.network "public_network"
+    d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
+    d.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.memory = 8192 
+      v.cpus = 6
+    end
+  end
+  config.vm.define "dlowkeyvmab" do |d|
+    d.vm.hostname = "dlowkeyvmab"
+    d.vm.network "public_network"
+    d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
+    d.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.memory = 4096 
+      v.cpus = 4
+    end
+  end
+  config.vm.define "dlowkeyvmac" do |d|
+    d.vm.hostname = "dlowkeyvmac"
+    d.vm.network "public_network"
+    d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
+    d.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.memory = 8192 
+      v.cpus = 3
+    end
+  end
+  config.vm.define "dlowkeyvmad" do |d|
+    d.vm.hostname = "dlowkeyvmad"
+    d.vm.network "public_network"
+    d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
+    d.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.memory = 8192 
+      v.cpus = 3
+    end
+  end
+  config.vm.define "dlowkeyvmae" do |d|
+    d.vm.hostname = "dlowkeyvmae"
+    d.vm.network "public_network"
+    d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
+    d.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.memory = 8192 
+      v.cpus = 8
+    end
+  end
+  config.vm.define "dlowkeyvmaf" do |d|
+    d.vm.hostname = "dlowkeyvmaf"
+    d.vm.network "public_network"
+    d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
+    d.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.memory = 8192 
+      v.cpus = 6
     end
   end
    if Vagrant.has_plugin?("vagrant-cachier")
