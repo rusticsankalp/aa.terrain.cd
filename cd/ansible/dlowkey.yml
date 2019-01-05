@@ -1,0 +1,8 @@
+- hosts: all
+  remote_user: vagrant
+  serial: 5
+  roles:
+    - common
+    - ipv6-disable
+    - docker
+    - k8s

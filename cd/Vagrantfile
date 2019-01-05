@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, :inline =>"
       echo 'Authorizing custom public key ....'
       echo '#{public_key}' >>  ~/.ssh/authorized_keys
-      #chmod 400 ~/.ssh/id_rsa
+      chmod 400 ~/.ssh/id_rsa
     ",privileged: false
   config.vm.provision :shell, :inline =>"
       echo 'Authorizing custom public key for root....'

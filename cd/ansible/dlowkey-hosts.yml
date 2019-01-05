@@ -1,0 +1,20 @@
+dlowkeyvmaa ansible_host=10.137.141.39
+dlowkeyvmab ansible_host=10.137.141.184
+dlowkeyvmac ansible_host=10.137.141.41
+dlowkeyvmad ansible_host=10.137.141.183
+dlowkeyvmae ansible_host=10.137.141.45
+
+
+[dlowkeyvms]
+dlowkeyvmaa
+dlowkeyvmab
+dlowkeyvmac
+dlowkeyvmad
+dlowkeyvmae
+
+
+[dlowkeyvms:vars]
+ansible_connection=ssh
+ansible_user=vagrant
+ansible_private_key_file=../.secrets/keys/cd_id_rsa2
+host_key_checking=False

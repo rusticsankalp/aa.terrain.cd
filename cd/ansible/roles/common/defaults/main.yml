@@ -1,5 +1,9 @@
 hosts: [
-  { host_ip: "10.0.0.0", host_name: "cd"}  
+  { host_ip: "10.137.141.39", host_name: "dlowkeyvmaa"},
+  { host_ip: "10.137.141.184", host_name: "dlowkeyvmab"},
+  { host_ip: "10.137.141.41", host_name: "dlowkeyvmac"},
+  { host_ip: "10.137.141.183", host_name: "dlowkeyvmad"},
+  { host_ip: "10.137.141.45", host_name: "dlowkeyvmae"},
 ]
 
 obsolete_services:
