@@ -1,0 +1,7 @@
+
+ansible-playbook cd_ansible_test_deploy.yml -i cd_ansible_test_hosts.ini
+
+12.3.2019 
+------
+
+need limited permissions for a private key for both vagrant and manual login to work 
