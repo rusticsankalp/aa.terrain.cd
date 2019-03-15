@@ -4,11 +4,6 @@
     id: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
     state: 'present'
 
-#- name: add apt signing key for azure cli from url
-#  apt_key:
-#    url: https://packages.microsoft.com/keys/microsoft.asc
-#    state: present
-
 - name: Debian add Docker repository and update apt cache
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
@@ -18,14 +13,25 @@
 
 - name: Debian Docker is present
   apt:
-    name: docker-ce=18.06.0~ce~3-0~ubuntu
+#name: docker-ce=18.06.0~ce~3-0~ubuntu
+    name: docker-ce
     update_cache: yes
-#    state: present
+    state: present
   tags: [docker]
 
-- name: Reload systemd daemon
-  systemd:
-    daemon_reload: true
+- name: docker-compose is present
+  apt:
+    name: docker-compose
+    update_cache: yes
+    state: present
+  tags: [docker]
+
+
+- name: 'enable docker systemd service'
+  service:
+    name: 'docker'
+    state: 'started'
+    enabled: 'yes'
 
 - name: vagrant user is added to the docker group
   user:
@@ -33,9 +39,4 @@
     group: docker
   tags: [docker]
 
-- name: Debian Docker service is restarted
-  service:
-    name: docker
-    state: restarted
-  tags: [docker]
- 
+
