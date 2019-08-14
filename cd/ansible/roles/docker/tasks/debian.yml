@@ -39,7 +39,7 @@
     group: docker
   tags: [docker]
   
- - name: vagrant user is added to the docker group
+- name: vagrant user is added to the docker group
   user:
     name: vagrant
     group: docker
