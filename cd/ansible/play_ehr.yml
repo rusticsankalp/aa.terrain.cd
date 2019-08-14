@@ -1,7 +1,8 @@
-- hosts: localhost
+- hosts: ehrvms
   remote_user: vagrant
-  serial: 3
+  serial: 5
   roles:
     - common
-    - azurecli
+    - ipv6-disable
     - docker
+    - k8s

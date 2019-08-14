@@ -1,3 +1,9 @@
+hosts: [
+  { host_ip: "10.158.1.214", host_name: "ehumblerumblevmaa"},
+  { host_ip: "10.158.1.215", host_name: "ehumblerumblevmab"},
+  { host_ip: "10.158.1.216", host_name: "ehumblerumblevmac"}
+]
+
 
 obsolete_services:
   - puppet
