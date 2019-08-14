@@ -1,3 +1,5 @@
+vagrant@cd:/vagrant/ansible$ ansible-playbook -i host_cd.ini  -k play_cd.yml
+--------
 Directory of F:\repo2\aa.terrain.cd\cd\.secrets\keys
 
 12/19/2018  06:16 PM    <DIR>          .
