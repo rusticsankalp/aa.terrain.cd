@@ -1,3 +1,31 @@
+
+https://cwiki.apache.org/confluence/display/AMBARI/Quick+Start+Guide
+----
+# sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0_221/bin/java" 0
+# sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.8.0_221/bin/javac" 0
+# sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0_221/bin/java
+# sudo update-alternatives --set javac /usr/lib/jvm/jdk1.8.0_221/bin/javac
+---------
+vim /etc/environment
+
+"Add in path " /usr/lib/jvm/jdk1.8.0_221/bin
+
+J2SDKDIR="/usr/lib/jvm/jdk1.8.0_221"
+J2REDIR="/usr/lib/jvm/jdk1.8.0_221/jre"
+JAVA_HOME="/usr/lib/jvm/jdk1.8.0_221"
+----
+/usr/lib/jvm/jdk1.8.0_221/bin
+--
+http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html
+
+su -
+echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu bionic main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+apt-get update
+apt-get install oracle-java8-installer
+exit
+-------
 vagrant@cd:/vagrant/ansible$ ansible-playbook -i host_cd.ini  -k play_cd.yml
 --------
 Directory of F:\repo2\aa.terrain.cd\cd\.secrets\keys
