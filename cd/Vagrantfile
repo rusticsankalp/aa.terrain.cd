@@ -7,26 +7,11 @@ Vagrant.configure(2) do |config|
   else
     config.vm.synced_folder ".", "/vagrant"
   end
-  public_key = File.read(".secrets/keys/cd_id_rsa.pub")
-  private_key = File.read(".secrets/keys/cd_id_rsa")
   config.vm.box = "ubuntu/bionic64"
   config.disksize.size = '50GB'
-  config.ssh.insert_key = false
-  config.ssh.private_key_path = [".secrets/keys/cd_id_rsa",".secrets/keys/insecure_private_key"]
-  config.vm.provision "file", source: ".secrets/keys/cd_id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
-  config.vm.provision "file", source: ".secrets/keys/cd_id_rsa", destination: "~/.ssh/id_rsa"
-  config.vm.provision :shell, :inline =>"
-      echo 'Authorizing custom public key ....'
-      echo '#{public_key}' >>  ~/.ssh/authorized_keys
-      #chmod 400 ~/.ssh/id_rsa
-    ",privileged: false
-  config.vm.provision :shell, :inline =>"
-      echo 'Authorizing custom public key for root....'
-      echo '#{public_key}' >>  /root/.ssh/authorized_keys
-    ",privileged: true
   config.vm.define "cd" do |d|
     d.vm.hostname = "cd"
-    d.vm.network "private_network", ip: "10.0.0.0"
+    d.vm.network "private_network", ip: "192.168.0.6"
     d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
     d.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/cd.yml -c local"
     d.vm.provider "virtualbox" do |v|
@@ -37,7 +22,7 @@ Vagrant.configure(2) do |config|
   end
     config.vm.define "hdp" do |d|
     d.vm.hostname = "hdp"
-    d.vm.network "private_network", ip: "10.0.0.1"
+    d.vm.network "private_network", ip: "192.168.0.7"
     d.vm.provision :shell, path: "scripts/bootstrap_ansible.sh"
     d.vm.provision :shell, inline: "PYTHONUNBUFFERED=1 ansible-playbook /vagrant/ansible/hdp.yml -c local"
     d.vm.provider "virtualbox" do |v|
