@@ -1,9 +1,8 @@
 hosts: [
-  { host_ip: "10.158.1.214", host_name: "ehumblerumblevmaa"},
-  { host_ip: "10.158.1.215", host_name: "ehumblerumblevmab"},
-  { host_ip: "10.158.1.216", host_name: "ehumblerumblevmac"}
+  { host_ip: "192.168.0.5", host_name: "linuxsvc"},
+  { host_ip: "192.168.0.6", host_name: "cd"},
+  { host_ip: "192.168.0.7", host_name: "hdp"}
 ]
-
 
 obsolete_services:
   - puppet
