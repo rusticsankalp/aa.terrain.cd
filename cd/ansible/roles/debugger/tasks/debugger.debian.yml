@@ -1,0 +1,10 @@
+- name: Extra variable test
+  debug:
+    msg: "{{ my_var }}"
+  when: my_var is defined
+  
+- name: Extra variable test
+  debug:
+    msg: "my_var not defined"
+  when: my_var is not defined
+    

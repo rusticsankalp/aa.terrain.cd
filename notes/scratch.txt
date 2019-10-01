@@ -1,3 +1,18 @@
+ansible-playbook /vagrant/ansible/debug.yml -c local -e my_var=CoolCmdLineVar -i /vagrant/ansible/host_debug.ini
+---------------
+https://www.unix-ag.uni-kl.de/~bloch/acng/html/howtos.html#ssluse
+
+deb [arch=amd64] http://HTTPS///download.docker.com/linux/ubuntu bionic stable
+deb http://HTTPS///packages.microsoft.com/repos/azure-cli/ bionic main
+------------
+install apt-cacher-ng
+
+https://www.tecmint.com/apt-cache-server-in-ubuntu/
+
+Acquire::http::Proxy "http://192.168.0.5:3142";
+http://192.168.0.5:3142/acng-report.html?doCount=Count+Data#stats
+-----------
+
 
 https://cwiki.apache.org/confluence/display/AMBARI/Quick+Start+Guide
 ----
