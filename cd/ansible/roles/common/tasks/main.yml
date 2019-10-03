@@ -11,3 +11,7 @@
     line: "{{ item.host_ip }} {{ item.host_name }}"
   with_items: "{{ hosts }}"
   tags: [common]
+  
+- name: Extra variable test
+  debug:
+    msg: "Hello sankalpg"

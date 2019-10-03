@@ -1,0 +1,55 @@
+- name: Install apt-cacher-ng
+  apt:
+    name: apt-cacher-ng
+    state: present
+
+- name: add cacher folder
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "/var/cache/apt-cacher-ng"
+ 
+- name: add cache log folder
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "/var/log/apt-cacher-ng"
+    
+- name: add Port
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "Port:3142"
+    
+- name: add BindAddress
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "BindAddress: 0.0.0.0"
+    
+- name: add deb repo to cache 
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "Remap-debrep: file:deb_mirror*.gz /debian ; file:backends_debian"
+
+- name: add ubuntu repo to cache
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "Remap-uburep: file:ubuntu_mirrors /ubuntu ; file:backends_ubuntu"
+    
+- name: add report Page
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "ReportPage: acng-report.html"
+    
+- name: Verbose logging for cacher
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "VerboseLog: 1"
+
+- name: add pid file 
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "PidFile: /var/run/apt-cacher-ng/pid"
+    
+- name: expirty threshold
+  lineinfile:
+    dest: /etc/apt-cacher-ng/acng.conf
+    line: "ExThreshold: 30"
+
